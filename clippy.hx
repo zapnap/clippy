@@ -19,7 +19,6 @@ class Clippy {
     label.setTextFormat(format);
     label.textColor = 0x888888;
     label.selectable = false;
-    label.x = 15;
     label.visible = false;
     
     flash.Lib.current.addChild(label);
@@ -32,14 +31,18 @@ class Clippy {
     button.overState = flash.Lib.attach("button_over");
     button.downState = flash.Lib.attach("button_down");
     button.hitTestState = flash.Lib.attach("button_down");
+    button.x = 95;
     
     button.addEventListener(MouseEvent.MOUSE_UP, function(e:MouseEvent) {
       flash.system.System.setClipboard(text);
       label.text = "copied!";
+      label.x = 85 - label.textWidth;
+
       label.setTextFormat(format);
     });
     
     button.addEventListener(MouseEvent.MOUSE_OVER, function(e:MouseEvent) {
+      label.x = 85 - label.textWidth;
       label.visible = true;
     });
     
